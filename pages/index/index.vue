@@ -26,8 +26,12 @@
 			<carousel :img-list="imgList" url-key="url" @selected="selectedBanner"/>
 		</view>
 		<uni-list v-for="(row, index) in tllist" :key="index">
-		   <uni-list-item :title="row.name" :note="row.con" :rightText="row.value" to="../detail/detail"></uni-list-item>
+		   <uni-list-item :title="row.type" :note="row.content" :rightText="row.price" to="../detail/detail"></uni-list-item>
 		</uni-list>
+		<view v-show="isLoadMore">
+		                <uni-load-more status="loading" ></uni-load-more>
+		          </view>
+		<u-toast ref="uToast" type="success"/>
 	</view>
 	
 </template>
@@ -41,19 +45,15 @@
 		data() {
 			return {
 				showHeader:true,
+				isLoadMore:false,
 				afterHeaderOpacity: 1,//不透明度
 				headerPosition: 'fixed',
 				headerTop:null,
 				title: 'Hello',
 				city: '天津',
-				tllist:[{ id: 1, name: '外卖', con: '日结，找一个拿外卖的',value:'¥100' },
-					{ id: 2, name: '快递', con: '日结，找一个拿外卖的',value:'¥1900' },
-					{ id: 3, name: '家教', con: '日结，找一个拿外卖的',value:'¥100' },
-					{ id: 4, name: '零工',  con: '日结，找一个拿外卖的',value:'¥80' },
-					{ id: 5, name: '在线',  con: '日结，找一个拿外卖的',value:'¥100' },
-					{ id: 6, name: '运动',  con: '日结，找一个拿外卖的',value:'¥100' },
-					{ id: 7, name: 'kk',  con: '日结，找一个拿外卖的',value:'¥100' },
-					{ id: 8, name: 'aa',  con: '日结，找一个拿外卖的',value:'¥100' }],
+				tllist:[],
+				page:1,
+				timer:null,
 				imgList: [{
 					url: 'https://img9.51tietu.net/pic/2019-091200/vgkpidei2tjvgkpidei2tj.jpg',
 					id: 1,
@@ -70,8 +70,27 @@
 			}
 		},
 		onLoad() {
-
 		},
+		onShow() {
+			this.page = 1;
+			this.tllist = [];
+			this.getMsg();
+		},
+		onReachBottom() {
+			if (!this.isLoadMore) {
+				this.isLoadMore = true
+				this.page += 1
+				this.timer = setTimeout(()=>{
+					this.getMsg()
+				},500)
+			}
+		},
+		onPullDownRefresh() {
+		        console.log('refresh');
+		        setTimeout(function () {
+		            uni.stopPullDownRefresh();
+		        }, 1000);
+		    },
 		methods: {
 			selectedBanner(item, index) {
 				console.log('', item, index)
@@ -79,6 +98,52 @@
 			toSearch(){
 				uni.navigateTo({
 					url:"../search/search"
+				})
+			},
+			getMsg: function() {
+				const that = this;
+				uni.showLoading({
+				})
+				uniCloud.callFunction({
+					name: 'test',
+					data:{
+						num:that.page
+					},
+					success(res) {
+						console.log("调用成功",res.result.data)
+						if (that.tllist.length > 0) {
+							if (res.result.data.length == 0) {
+								that.$refs.uToast.show({
+									title: '没有更多数据了',
+									type:'success'
+								})
+							}
+							let newlist = res.result.data
+							newlist.forEach((item, index) => {
+								if (item.money_type == "日结") {
+									item.price = item.price + "/日"
+								} else if (item.money_type == "月结") {
+									item.price = item.price + "/月"
+								}
+							})
+							that.tllist = that.tllist.concat(newlist)
+							console.log(that.tllist)
+						} else {
+							that.tllist = res.result.data
+							that.tllist.forEach((item, index) => {
+								if (item.money_type == "日结") {
+									item.price = item.price + "/日"
+								} else if (item.money_type == "月结") {
+									item.price = item.price + "/月"
+								}
+							})
+						}
+						that.isLoadMore = false
+						clearTimeout(that.timer)
+					},
+					complete() {
+						uni.hideLoading()
+					}
 				})
 			}
 		}

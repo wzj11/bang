@@ -12,7 +12,8 @@
 				<view class="text">{{ row.name }}</view>
 			</view>
 		</view>
-	</view></view>
+		<button @click="toFa">fabu</button>
+	</view>
 </template>
 
 <script>
@@ -55,11 +56,16 @@
 				uni.setStorageSync('catName',e.name);
 				console.log(e.name)
 				uni.navigateTo({
-					url:"../list/list?cid='+e.id+'&name='+e.name"
+					url:"../list/list?cid="+e.id+'&name='+e.name
 				});
 			},
 			selectedBanner(item, index) {
 				console.log('', item, index)
+			},
+			toFa:function() {
+				uni.navigateTo({
+					url:'../recruit/recruit'
+				})
 			}
 		}
 	}

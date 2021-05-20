@@ -1,6 +1,11 @@
 {
   "navigationBarTitleText": "list",
   "usingComponents": {
+<<<<<<< HEAD
+=======
+    "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+    "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item",
+>>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
     "m-search": "/components/mehaotian-search-revision/mehaotian-search-revision"
   }
 }

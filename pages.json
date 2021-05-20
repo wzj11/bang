@@ -1,5 +1,9 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+	"easycom": {
+			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		},
+	"pages": [ 
 		{
 			"path": "pages/user/user",
 			"style": {
@@ -18,7 +22,12 @@
 				"navigationBarTitleText": "信息"
 			}
 		},
-		
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
 		{
 			"path": "pages/detail/detail",
 			"style": {
@@ -89,7 +98,14 @@
             "path" : "pages/user/Favorite/Favorite",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": ""
+		}
+		}
+	    ,{
+            "path" : "pages/recruit/recruit",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发布",
                 "enablePullDownRefresh": false
             }
             
@@ -99,10 +115,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+            "path" : "pages/newrecruit/newrecruit",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "xintu",
                 "enablePullDownRefresh": false
             }
             
         }
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

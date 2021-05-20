@@ -12,8 +12,8 @@
 	}
 </script>
 
-<style>
-	/*每个页面公共css */
+<style lang="scss">
+	@import "uview-ui/index.scss";
 	@import "ReView/fontawesome.css";
 	@import "Review/component.css";
 </style>

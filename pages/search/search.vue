@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="search-box">
 			<!-- mSearch组件 如果使用原样式，删除组件元素-->
-			<mSearch class="mSearch-input-box" :mode="2" button="inside" :placeholder="defaultKeyword" @search="doSearch(false)" @input="inputChange" @confirm="doSearch(false)" v-model="keyword"></mSearch>
+			<mSearch class="mSearch-input-box" :mode="2" button="inside" :placeholder="defaultKeyword" @search="findMsg" @input="inputChange" @confirm="doSearch(false)" v-model="keyword"></mSearch>
 			<!-- 原样式 如果使用原样式，恢复下方注销代码 -->
 			<!-- 						
 			<view class="input-box">
@@ -14,20 +14,7 @@
 			<!-- 原样式 end -->
 		</view>
 		<view class="search-keyword" >
-			<scroll-view class="keyword-list-box" v-show="isShowKeywordList" scroll-y>
-				<block v-for="(row,index) in keywordList" :key="index">
-					<view class="keyword-entry" hover-class="keyword-entry-tap" >
-						<view class="keyword-text" @tap.stop="doSearch(keywordList[index].keyword)">
-							<rich-text :nodes="row.htmlStr"></rich-text>
-						</view>
-						<view class="keyword-img" @tap.stop="setKeyword(keywordList[index].keyword)">
-							<image src="/static/HM-search/back.png"></image>
-						</view>
-					</view>
-				</block>
-				
-			</scroll-view>
-			<scroll-view class="keyword-box" v-show="!isShowKeywordList" scroll-y>
+			<scroll-view class="keyword-box" v-if="!isShowKeywordList" scroll-y>
 				<view class="keyword-block" v-if="oldKeywordList.length>0">
 					<view class="keyword-list-header">
 						<view>历史搜索</view>
@@ -54,6 +41,9 @@
 					</view>
 				</view>
 			</scroll-view>
+			<uni-list v-for="(row, index) in tllist" :key="index" v-if="isShowKeywordList">
+			   <uni-list-item :title="row.type" :note="row.content" :rightText="row.price" to="../detail/detail"></uni-list-item>
+			</uni-list>
 		</view>
 	</view>
 </template>
@@ -67,6 +57,7 @@
 				defaultKeyword: "",
 				keyword: "",
 				oldKeywordList: [],
+				tllist:[],
 				hotKeywordList: [],
 				keywordList: [],
 				forbid: '',
@@ -89,6 +80,27 @@
 			},
 			blur(){
 				uni.hideKeyboard()
+			},
+			findMsg: function () {
+				const that = this;
+				uniCloud.callFunction({
+					name:'find',
+					data:{
+						id:'wzj',
+						value:that.keyword
+					},
+					success(res) {
+						that.tllist = res.result.data
+						that.isShowKeywordList = true
+						console.log(that.tllist)
+						that.tllist.forEach((item, index) => {
+							if (item.money_type == "日结") {
+								item.price = item.price + "/日"
+							}
+						})
+						console.log(res,"chengg")
+					}
+				})
 			},
 			//加载默认搜索关键字
 			loadDefaultKeyword() {
@@ -117,6 +129,7 @@
 				if (!keyword) {
 					this.keywordList = [];
 					this.isShowKeywordList = false;
+					this.tllist = [];
 					return;
 				}
 				this.isShowKeywordList = true;

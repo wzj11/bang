@@ -4,6 +4,7 @@
     "ignore": []
   },
   "setting": {
+<<<<<<< HEAD
     "urlCheck": false,
     "es6": true,
     "enhance": false,
@@ -53,6 +54,29 @@
       "list": []
     },
     "miniprogram": {
+=======
+    "urlCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "",
+  "appid": "wxaec6b551fdca52d8",
+  "projectname": "newbang1",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+>>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
       "list": []
     }
   }

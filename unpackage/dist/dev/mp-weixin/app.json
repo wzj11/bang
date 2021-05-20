@@ -1,13 +1,20 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/user/user",
     "pages/index/index",
     "pages/messsage/messsage",
+=======
+    "pages/index/index",
+    "pages/messsage/messsage",
+    "pages/my/my",
+>>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
     "pages/detail/detail",
     "pages/list/list",
     "pages/search/search",
     "pages/chat/chat",
     "pages/clafy/clafy",
+<<<<<<< HEAD
     "pages/user/myResume/myResume",
     "pages/user/allOffer/allOffer",
     "pages/user/myPartTime/myPartTime",
@@ -16,6 +23,10 @@
     "pages/user/share/share",
     "pages/user/Favorite/Favorite",
     "pages/login/login/login"
+=======
+    "pages/recruit/recruit",
+    "pages/newrecruit/newrecruit"
+>>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
   ],
   "subPackages": [],
   "window": {
@@ -41,6 +52,7 @@
       },
       {
         "text": "我的",
+<<<<<<< HEAD
         "pagePath": "pages/user/user"
       }
     ]
@@ -48,5 +60,12 @@
   "usingComponents": {
     "title-bar": "/components/titleBar"
   },
+=======
+        "pagePath": "pages/my/my"
+      }
+    ]
+  },
+  "usingComponents": {},
+>>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
   "sitemapLocation": "sitemap.json"
 }
