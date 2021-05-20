@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "path": "pages/newrecruit/newrecruit",
-  "style": {
-    "navigationBarTitleText": "xintu",
-    "enablePullDownRefresh": false
-  },
-  "usingComponents": {}
-}

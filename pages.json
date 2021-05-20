@@ -110,11 +110,8 @@
             }
             
         }
-        ,{
-            "path" : "pages/login/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
+        ,
+				  {
             "path" : "pages/newrecruit/newrecruit",
             "style" :                                                                                    
             {
@@ -123,7 +120,6 @@
             }
             
         }
-		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
