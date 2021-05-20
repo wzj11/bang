@@ -4,11 +4,8 @@
     "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
     "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
     "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item",
-<<<<<<< HEAD
-=======
     "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more",
     "u-toast": "/node-modules/uview-ui/components/u-toast/u-toast",
->>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
     "carousel": "/components/vear-carousel/vear-carousel"
   }
 }
