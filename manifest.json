@@ -57,11 +57,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-<<<<<<< HEAD
-        "appid" : "",
-=======
         "appid" : "wxaec6b551fdca52d8",
->>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
         "setting" : {
             "urlCheck" : false
         },
@@ -76,12 +72,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-<<<<<<< HEAD
-    "uniStatistics": {  
-        "enable": false
-=======
     "uniStatistics" : {
         "enable" : false
->>>>>>> 6b31e4d4d616d9a012eee336c2bddff672454d13
     }
 }
