@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "list",
+  "usingComponents": {
+    "m-search": "/components/mehaotian-search-revision/mehaotian-search-revision"
+  }
+}

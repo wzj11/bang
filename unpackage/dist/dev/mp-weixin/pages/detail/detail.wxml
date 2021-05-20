@@ -1,0 +1,1 @@
+<uni-list vue-id="3db16520-1" bind:__l="__l" vue-slots="{{['default']}}"><uni-list-item vue-id="{{('3db16520-2')+','+('3db16520-1')}}" title="列表文字" bind:__l="__l"></uni-list-item><uni-list-item vue-id="{{('3db16520-3')+','+('3db16520-1')}}" title="列表文" bind:__l="__l"></uni-list-item></uni-list>
